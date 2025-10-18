@@ -1,0 +1,23 @@
+@"
+# Virtual environment
+.venv/
+venv/
+
+# Database
+*.sqlite3
+*.db
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Django
+*.log
+local_settings.py
+
+# IDE
+.vscode/
+.idea/
+"@ | Out-File -FilePath .gitignore -Encoding UTF8
