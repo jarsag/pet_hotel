@@ -1,0 +1,26 @@
+{% extends 'hotel/base.html' %}
+
+{% block content %}
+<h2>Питомцы</h2>
+<a href="{% url 'pet_create' %}" class="btn btn-success mb-3">Добавить питомца</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Имя</th>
+            <th>Тип</th>
+            <th>Порода</th>
+            <th>Владелец</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for pet in pets %}
+        <tr>
+            <td>{{ pet.name }}</td>
+            <td>{{ pet.get_type_display }}</td>
+            <td>{{ pet.breed }}</td>
+            <td>{{ pet.owner.last_name }} {{ pet.owner.first_name }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

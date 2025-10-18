@@ -1,0 +1,23 @@
+v{% extends 'hotel/base.html' %}
+
+{% block content %}
+<h2>Номера</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Номер</th>
+            <th>Тип</th>
+            <th>Цена за день</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for room in rooms %}
+        <tr>
+            <td>{{ room.room_number }}</td>
+            <td>{{ room.type }}</td>
+            <td>{{ room.price_per_day }} руб.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

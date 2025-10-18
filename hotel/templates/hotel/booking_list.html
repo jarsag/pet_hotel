@@ -1,0 +1,27 @@
+{% extends 'hotel/base.html' %}
+
+{% block content %}
+<h2>Бронирования</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Питомец</th>
+            <th>Номер</th>
+            <th>Заезд</th>
+            <th>Выезд</th>
+            <th>Статус</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for booking in bookings %}
+        <tr>
+            <td>{{ booking.pet.name }}</td>
+            <td>{{ booking.room.room_number }}</td>
+            <td>{{ booking.check_in_date }}</td>
+            <td>{{ booking.check_out_date }}</td>
+            <td>{{ booking.get_status_display }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

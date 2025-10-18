@@ -1,0 +1,44 @@
+{% extends 'hotel/base.html' %}
+
+{% block content %}
+<h2>Добро пожаловать в гостиницу для животных!</h2>
+<p>Используйте навигацию для просмотра данных.</p>
+<div class="row mt-4">
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Владельцы</h5>
+                <p class="card-text">Управление клиентами</p>
+                <a href="/hotel/owners/" class="btn btn-primary">Перейти</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Питомцы</h5>
+                <p class="card-text">Список животных</p>
+                <a href="/hotel/pets/" class="btn btn-primary">Перейти</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Номера</h5>
+                <p class="card-text">Доступные комнаты</p>
+                <a href="/hotel/rooms/" class="btn btn-primary">Перейти</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Бронирования</h5>
+                <p class="card-text">Текущие заказы</p>
+                <a href="/hotel/bookings/" class="btn btn-primary">Перейти</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
