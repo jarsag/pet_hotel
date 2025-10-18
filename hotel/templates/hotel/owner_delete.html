@@ -1,0 +1,11 @@
+{% extends 'hotel/base.html' %}
+
+{% block content %}
+<h2>Удалить владельца</h2>
+<p>Вы уверены, что хотите удалить {{ owner.last_name }} {{ owner.first_name }}?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Удалить</button>
+    <a href="{% url 'owner_list' %}" class="btn btn-secondary">Отмена</a>
+</form>
+{% endblock %}

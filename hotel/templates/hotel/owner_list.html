@@ -3,7 +3,6 @@
 {% block content %}
 <h2>Владельцы</h2>
 <a href="{% url 'owner_create' %}" class="btn btn-success mb-3">Добавить владельца</a>
-
 <table class="table">
     <thead>
         <tr>
@@ -22,7 +21,8 @@
             <td>{{ owner.phone }}</td>
             <td>{{ owner.email }}</td>
             <td>
-                <a href="{% url 'owner_edit' owner.id %}" class="btn btn-sm btn-warning">Редактировать</a>
+                <a href="{% url 'owner_edit' owner.id %}" class="btn btn-sm btn-warning">Редакт.</a>
+                <a href="{% url 'owner_delete' owner.id %}" class="btn btn-sm btn-danger">Удалить</a>
             </td>
         </tr>
         {% endfor %}

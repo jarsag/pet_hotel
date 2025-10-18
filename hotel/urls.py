@@ -15,4 +15,8 @@ urlpatterns = [
     path('pet/new/', views.pet_create, name='pet_create'),
     path('room/new/', views.room_create, name='room_create'),
     path('booking/new/', views.booking_create, name='booking_create'),
+    path('owner/<int:pk>/delete/', views.owner_delete, name='owner_delete'),
+    path('pet/<int:pk>/delete/', views.pet_delete, name='pet_delete'),
+    path('room/<int:pk>/delete/', views.room_delete, name='room_delete'),
+    path('booking/<int:pk>/delete/', views.booking_delete, name='booking_delete'),
 ]

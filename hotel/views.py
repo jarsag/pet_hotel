@@ -104,3 +104,31 @@ def booking_create(request):
     else:
         form = BookingForm()
     return render(request, 'hotel/booking_edit.html', {'form': form})
+
+def owner_delete(request, pk):
+    owner = get_object_or_404(Owner, pk=pk)
+    if request.method == "POST":
+        owner.delete()
+        return redirect('owner_list')
+    return render(request, 'hotel/owner_delete.html', {'owner': owner})
+
+def pet_delete(request, pk):
+    pet = get_object_or_404(Pet, pk=pk)
+    if request.method == "POST":
+        pet.delete()
+        return redirect('pet_list')
+    return render(request, 'hotel/pet_delete.html', {'pet': pet})
+
+def room_delete(request, pk):
+    room = get_object_or_404(Room, pk=pk)
+    if request.method == "POST":
+        room.delete()
+        return redirect('room_list')
+    return render(request, 'hotel/room_delete.html', {'room': room})
+
+def booking_delete(request, pk):
+    booking = get_object_or_404(Booking, pk=pk)
+    if request.method == "POST":
+        booking.delete()
+        return redirect('booking_list')
+    return render(request, 'hotel/booking_delete.html', {'booking': booking})
