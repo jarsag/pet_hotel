@@ -132,3 +132,19 @@ def booking_delete(request, pk):
         booking.delete()
         return redirect('booking_list')
     return render(request, 'hotel/booking_delete.html', {'booking': booking})
+
+def owner_detail(request, pk):
+    owner = get_object_or_404(Owner, pk=pk)
+    return render(request, 'hotel/owner_detail.html', {'owner': owner})
+
+def pet_detail(request, pk):
+    pet = get_object_or_404(Pet, pk=pk)
+    return render(request, 'hotel/pet_detail.html', {'pet': pet})
+
+def room_detail(request, pk):
+    room = get_object_or_404(Room, pk=pk)
+    return render(request, 'hotel/room_detail.html', {'room': room})
+
+def booking_detail(request, pk):
+    booking = get_object_or_404(Booking, pk=pk)
+    return render(request, 'hotel/booking_detail.html', {'booking': booking})

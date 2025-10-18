@@ -1,0 +1,23 @@
+{% extends 'hotel/base.html' %}
+
+{% block content %}
+<h2>Информация о питомце</h2>
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">{{ pet.name }}</h5>
+        <p><strong>Тип:</strong> {{ pet.get_type_display }}</p>
+        <p><strong>Порода:</strong> {{ pet.breed }}</p>
+        <p><strong>Владелец:</strong> 
+            <a href="{% url 'owner_detail' pet.owner.id %}">
+                {{ pet.owner.last_name }} {{ pet.owner.first_name }}
+            </a>
+        </p>
+        <p><strong>Телефон владельца:</strong> {{ pet.owner.phone }}</p>
+        <p><strong>Особые отметки:</strong> {{ pet.special_notes|default:"нет" }}</p>
+    </div>
+</div>
+<div class="mt-3">
+    <a href="{% url 'pet_edit' pet.id %}" class="btn btn-warning">Редактировать</a>
+    <a href="{% url 'pet_list' %}" class="btn btn-secondary">Назад к списку</a>
+</div>
+{% endblock %}

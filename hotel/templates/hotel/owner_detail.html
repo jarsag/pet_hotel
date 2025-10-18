@@ -1,0 +1,9 @@
+{% extends 'hotel/base.html' %}
+
+{% block content %}
+<h2>{{ owner.last_name }} {{ owner.first_name }}</h2>
+<p>Телефон: {{ owner.phone }}</p>
+<p>Email: {{ owner.email }}</p>
+<a href="{% url 'owner_edit' owner.id %}" class="btn btn-warning">Редактировать</a>
+<a href="{% url 'owner_list' %}" class="btn btn-secondary">Назад</a>
+{% endblock %}

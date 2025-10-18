@@ -19,4 +19,8 @@ urlpatterns = [
     path('pet/<int:pk>/delete/', views.pet_delete, name='pet_delete'),
     path('room/<int:pk>/delete/', views.room_delete, name='room_delete'),
     path('booking/<int:pk>/delete/', views.booking_delete, name='booking_delete'),
+    path('owner/<int:pk>/', views.owner_detail, name='owner_detail'),
+    path('pet/<int:pk>/', views.pet_detail, name='pet_detail'),
+    path('room/<int:pk>/', views.room_detail, name='room_detail'),
+    path('booking/<int:pk>/', views.booking_detail, name='booking_detail'),
 ]

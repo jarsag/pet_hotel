@@ -10,6 +10,7 @@
             <th>Имя</th>
             <th>Телефон</th>
             <th>Email</th>
+            <th>Питомцы</th>
             <th>Действия</th>
         </tr>
     </thead>
@@ -20,6 +21,13 @@
             <td>{{ owner.first_name }}</td>
             <td>{{ owner.phone }}</td>
             <td>{{ owner.email }}</td>
+            <td>
+            {% for pet in owner.pet_set.all %}
+                <a href="{% url 'pet_detail' pet.id %}">{{ pet.name }}</a>{% if not forloop.last %}, {% endif %}
+            {% empty %}
+                нет питомцев
+            {% endfor %}
+            </td>
             <td>
                 <a href="{% url 'owner_edit' owner.id %}" class="btn btn-sm btn-warning">Редакт.</a>
                 <a href="{% url 'owner_delete' owner.id %}" class="btn btn-sm btn-danger">Удалить</a>
