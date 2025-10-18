@@ -1,0 +1,29 @@
+{% extends 'hotel/base.html' %}
+
+{% block content %}
+<h2>Информация о бронировании</h2>
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Бронирование #{{ booking.id }}</h5>
+        <p><strong>Питомец:</strong> 
+            <a href="{% url 'pet_detail' booking.pet.id %}">{{ booking.pet.name }}</a>
+        </p>
+        <p><strong>Владелец:</strong> 
+            <a href="{% url 'owner_detail' booking.pet.owner.id %}">
+                {{ booking.pet.owner.last_name }} {{ booking.pet.owner.first_name }}
+            </a>
+        </p>
+        <p><strong>Номер:</strong> 
+            <a href="{% url 'room_detail' booking.room.id %}">{{ booking.room.room_number }}</a>
+        </p>
+        <p><strong>Дата заезда:</strong> {{ booking.check_in_date }}</p>
+        <p><strong>Дата выезда:</strong> {{ booking.check_out_date }}</p>
+        <p><strong>Статус:</strong> {{ booking.get_status_display }}</p>
+        <p><strong>Стоимость:</strong> {{ booking.total_cost|default:"не рассчитана" }} руб.</p>
+    </div>
+</div>
+<div class="mt-3">
+    <a href="{% url 'booking_edit' booking.id %}" class="btn btn-warning">Редактировать</a>
+    <a href="{% url 'booking_list' %}" class="btn btn-secondary">Назад к списку</a>
+</div>
+{% endblock %}

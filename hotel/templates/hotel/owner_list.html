@@ -22,11 +22,12 @@
             <td>{{ owner.phone }}</td>
             <td>{{ owner.email }}</td>
             <td>
-            {% for pet in owner.pet_set.all %}
-                <a href="{% url 'pet_detail' pet.id %}">{{ pet.name }}</a>{% if not forloop.last %}, {% endif %}
-            {% empty %}
-                нет питомцев
-            {% endfor %}
+                {% for pet in owner.pet_set.all %}
+                    <a href="{% url 'pet_detail' pet.id %}">{{ pet.name }}</a>{% if not forloop.last %}, {% endif %}
+                {% empty %}
+                    нет питомцев 
+                    <a href="{% url 'pet_create_for_owner' owner.id %}" class="btn btn-sm btn-success ms-2">+ Добавить</a>
+                {% endfor %}
             </td>
             <td>
                 <a href="{% url 'owner_edit' owner.id %}" class="btn btn-sm btn-warning">Редакт.</a>

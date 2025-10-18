@@ -148,3 +148,73 @@ def room_detail(request, pk):
 def booking_detail(request, pk):
     booking = get_object_or_404(Booking, pk=pk)
     return render(request, 'hotel/booking_detail.html', {'booking': booking})
+
+def pet_create_for_owner(request, owner_id):
+    owner = get_object_or_404(Owner, pk=owner_id)
+    if request.method == "POST":
+        form = PetForm(request.POST)
+        if form.is_valid():
+            pet = form.save(commit=False)
+            pet.owner = owner
+            pet.save()
+            return redirect('owner_list')
+    else:
+        form = PetForm(initial={'owner': owner})
+    return render(request, 'hotel/pet_edit.html', {'form': form})
+
+def room_create_range(request):
+    if request.method == "POST":
+        start_room = request.POST.get('start_room')
+        end_room = request.POST.get('end_room')
+        room_type = request.POST.get('room_type')
+        price = request.POST.get('price_per_day')
+        
+        start_num = int(start_room)
+        end_num = int(end_room)
+        
+        for room_num in range(start_num, end_num + 1):
+            Room.objects.create(
+                room_number=str(room_num),
+                type=room_type,
+                price_per_day=price
+            )
+        return redirect('room_list')
+    
+    return render(request, 'hotel/room_create_range.html')
+
+def room_detail(request, pk):
+    room = get_object_or_404(Room, pk=pk)
+    return render(request, 'hotel/room_detail.html', {'room': room})
+
+def room_edit(request, pk):
+    room = get_object_or_404(Room, pk=pk)
+    if request.method == "POST":
+        form = RoomForm(request.POST, instance=room)
+        if form.is_valid():
+            form.save()
+            return redirect('room_list')
+    else:
+        form = RoomForm(instance=room)
+    return render(request, 'hotel/room_edit.html', {'form': form})
+
+def booking_detail(request, pk):
+    booking = get_object_or_404(Booking, pk=pk)
+    return render(request, 'hotel/booking_detail.html', {'booking': booking})
+
+def booking_edit(request, pk):
+    booking = get_object_or_404(Booking, pk=pk)
+    if request.method == "POST":
+        form = BookingForm(request.POST, instance=booking)
+        if form.is_valid():
+            form.save()
+            return redirect('booking_list')
+    else:
+        form = BookingForm(instance=booking)
+    return render(request, 'hotel/booking_edit.html', {'form': form})
+
+def booking_delete(request, pk):
+    booking = get_object_or_404(Booking, pk=pk)
+    if request.method == "POST":
+        booking.delete()
+        return redirect('booking_list')
+    return render(request, 'hotel/booking_delete.html', {'booking': booking})

@@ -1,0 +1,26 @@
+{% extends 'hotel/base.html' %}
+
+{% block content %}
+<h2>Создать диапазон номеров</h2>
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label>Номер начала диапазона:</label>
+        <input type="number" name="start_room" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label>Номер конца диапазона:</label>
+        <input type="number" name="end_room" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label>Тип номера:</label>
+        <input type="text" name="room_type" class="form-control" value="Стандарт" required>
+    </div>
+    <div class="mb-3">
+        <label>Цена за день:</label>
+        <input type="number" name="price_per_day" class="form-control" step="0.01" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Создать номера</button>
+    <a href="{% url 'room_list' %}" class="btn btn-secondary">Отмена</a>
+</form>
+{% endblock %}

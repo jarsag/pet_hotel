@@ -23,4 +23,6 @@ urlpatterns = [
     path('pet/<int:pk>/', views.pet_detail, name='pet_detail'),
     path('room/<int:pk>/', views.room_detail, name='room_detail'),
     path('booking/<int:pk>/', views.booking_detail, name='booking_detail'),
+    path('pet/new/owner/<int:owner_id>/', views.pet_create_for_owner, name='pet_create_for_owner'),
+    path('room/range/', views.room_create_range, name='room_create_range'),
 ]
